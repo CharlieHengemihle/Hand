@@ -73,8 +73,20 @@ describe('index dwarves', () => {
       ...newDwarf,
     });
   });
-  it('UPDATE /dwarves/:id should update an extant dwarf', aync);
-});
-afterAll(() => {
-  pool.end();
+  it('PUT /dwarves/:id should update an extant dwarf', async () => {
+    const resp = await request(app).put('/dwarves/1').send({
+      name: 'Jimli',
+    });
+    expect(resp.body.name).toBe('Jimli');
+  });
+  it('DELETE /dwarves/:id should delete a dwarf', async () => {
+    const resp = await request(app).delete('/dwarves/1');
+    expect(resp.status).toBe(200);
+
+    const dwarfResp = await request(app).get('/dwarves/1');
+    expect(dwarfResp.status).toBe(404);
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
