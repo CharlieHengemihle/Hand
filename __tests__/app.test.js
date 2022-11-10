@@ -60,7 +60,21 @@ describe('index dwarves', () => {
     };
     expect(resp.body).toEqual(gimli);
   });
-  afterAll(() => {
-    pool.end();
+  it('POST /dwarves should make a new dwarf', async () => {
+    const newDwarf = {
+      name: 'Steve',
+      purpose: 'Be a good boy',
+      source: 'Hoxxes IV',
+      url: 'https://deeprockgalactic.fandom.com/wiki/Steve',
+    };
+    const resp = await request(app).post('/dwarves').send(newDwarf);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newDwarf,
+    });
   });
+  it('UPDATE /dwarves/:id should update an extant dwarf', aync);
+});
+afterAll(() => {
+  pool.end();
 });
