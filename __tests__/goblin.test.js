@@ -79,6 +79,13 @@ describe('index goblins', () => {
     });
     expect(resp.body.name).toBe('Ron');
   });
+  it('DELETE /goblins/:id will terminate a gobo', async () => {
+    const resp = await request(app).delete('/goblins/1');
+    expect(resp.status).toBe(200);
+
+    const goboResp = await request(app).get('/goblins/1');
+    expect(goboResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
