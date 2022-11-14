@@ -49,6 +49,17 @@ describe('humans routes', () => {
       ]
     `);
   });
+  it('gets human with detail', async () => {
+    const resp = await request(app).get('/humans/1');
+    const finn = {
+      id: '1',
+      name: 'Finn Mertins',
+      purpose: 'The Last Human',
+      source: 'Land of Ooo',
+      url: 'https://adventuretime.fandom.com/wiki/Finn',
+    };
+    expect(resp.body).toEqual(finn);
+  });
   afterAll(() => {
     pool.end();
   });
