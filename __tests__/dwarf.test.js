@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('index dwarves', () => {
+describe('dwarves routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
