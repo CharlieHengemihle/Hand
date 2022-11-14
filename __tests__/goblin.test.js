@@ -74,9 +74,7 @@ describe('index goblins', () => {
     });
   });
   it('PUT /goblins/:id should update a gobo', async () => {
-    const resp = await (
-      await request(app).put('/goblins/1')
-    ).setEncoding({
+    const resp = await request(app).put('/goblins/1').send({
       name: 'Ron',
     });
     expect(resp.body.name).toBe('Ron');
