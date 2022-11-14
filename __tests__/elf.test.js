@@ -73,4 +73,10 @@ describe('index elves', () => {
       ...newElf,
     });
   });
+  it('PUT /elves/:id should update an extant elf', async () => {
+    const resp = await request(app).put('/elves/1').send({
+      name: 'Gregolas',
+    });
+    expect(resp.body.name).toBe('Gregolas');
+  });
 });
