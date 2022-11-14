@@ -79,4 +79,14 @@ describe('index elves', () => {
     });
     expect(resp.body.name).toBe('Gregolas');
   });
+  it('DELETE /elves/:id should delete a elf', async () => {
+    const resp = await request(app).delete('/elves/1');
+    expect(resp.status).toBe(200);
+
+    const elfResp = await request(app).get('/elves/1');
+    expect(elfResp.status).toBe(404);
+  });
+  afterAll(() => {
+    pool.end();
+  });
 });
