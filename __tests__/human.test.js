@@ -67,9 +67,7 @@ describe('humans routes', () => {
       source: 'Shady Side, MD',
       url: 'https://www.linkedin.com/in/charliehengemihle/',
     };
-    const resp = await (
-      await request(app).post('/humans')
-    ).setEncoding(newHuman);
+    const resp = await request(app).post('/humans').send(newHuman);
     expect(resp.body).toEqual({
       id: expect.any(String),
       ...newHuman,
