@@ -60,4 +60,17 @@ describe('index elves', () => {
     };
     expect(resp.body).toEqual(legolas);
   });
+  it('POST /elves should make a new elf', async () => {
+    const newElf = {
+      name: 'Ezuri',
+      purpose: 'Renegade Leader',
+      source: 'Mirrodin',
+      url: 'https://mtg.fandom.com/wiki/Ezuri',
+    };
+    const resp = await request(app).post('/elves').send(newElf);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newElf,
+    });
+  });
 });
