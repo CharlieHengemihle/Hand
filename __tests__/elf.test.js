@@ -49,4 +49,15 @@ describe('index elves', () => {
       ]
     `);
   });
+  it('gets elf with detail', async () => {
+    const resp = await request(app).get('/elves/1');
+    const legolas = {
+      id: '1',
+      name: 'Legolas Greenleaf',
+      purpose: 'Prince of the Woodland Realm',
+      source: 'Middle Earth',
+      url: 'https://hero.fandom.com/wiki/Legolas',
+    };
+    expect(resp.body).toEqual(legolas);
+  });
 });
