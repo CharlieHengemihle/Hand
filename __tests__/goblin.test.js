@@ -73,6 +73,14 @@ describe('index goblins', () => {
       ...newGobo,
     });
   });
+  it('PUT /goblins/:id should update a gobo', async () => {
+    const resp = await (
+      await request(app).put('/goblins/1')
+    ).setEncoding({
+      name: 'Ron',
+    });
+    expect(resp.body.name).toBe('Ron');
+  });
   afterAll(() => {
     pool.end();
   });
