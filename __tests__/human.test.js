@@ -60,6 +60,21 @@ describe('humans routes', () => {
     };
     expect(resp.body).toEqual(finn);
   });
+  it('POST /humans should make a new human', async () => {
+    const newHuman = {
+      name: 'Charlie Hengemihle',
+      purpose: 'Just Do IT!',
+      source: 'Shady Side, MD',
+      url: 'https://www.linkedin.com/in/charliehengemihle/',
+    };
+    const resp = await (
+      await request(app).post('/humans')
+    ).setEncoding(newHuman);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newHuman,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
