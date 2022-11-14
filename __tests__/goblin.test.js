@@ -60,6 +60,19 @@ describe('index goblins', () => {
     };
     expect(resp.body).toEqual(john);
   });
+  it('POST /goblins should add a new goblin', async () => {
+    const newGobo = {
+      name: 'Norman Osborn',
+      purpose: 'Harass Spiderman',
+      source: 'New Haven, Connecticut',
+      url: 'https://en.wikipedia.org/wiki/Green_Goblin',
+    };
+    const resp = await (await request(app).post('/goblins')).send(newGobo);
+    espect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newGobo,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
