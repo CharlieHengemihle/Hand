@@ -73,6 +73,12 @@ describe('humans routes', () => {
       ...newHuman,
     });
   });
+  it('PUT /human/:id should update a human', async () => {
+    const resp = await request(app).put('/humans/1').send({
+      name: 'Finn Mervens',
+    });
+    expect(resp.body.name).toBe('Finn Mervens');
+  });
   afterAll(() => {
     pool.end();
   });
