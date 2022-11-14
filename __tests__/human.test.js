@@ -79,6 +79,13 @@ describe('humans routes', () => {
     });
     expect(resp.body.name).toBe('Finn Mervens');
   });
+  it('DELETE /humans/:id should delete a human', async () => {
+    const resp = await request(app).delete('/humans/1');
+    expect(resp.status).toBe(200);
+
+    const humanResp = await request(app).get('/humans/1');
+    expect(humanResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
