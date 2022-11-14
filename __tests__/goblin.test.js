@@ -67,8 +67,8 @@ describe('index goblins', () => {
       source: 'New Haven, Connecticut',
       url: 'https://en.wikipedia.org/wiki/Green_Goblin',
     };
-    const resp = await (await request(app).post('/goblins')).send(newGobo);
-    espect(resp.body).toEqual({
+    const resp = await request(app).post('/goblins').send(newGobo);
+    expect(resp.body).toEqual({
       id: expect.any(String),
       ...newGobo,
     });
