@@ -53,7 +53,7 @@ describe('humans routes', () => {
     const resp = await request(app).get('/humans/1');
     const finn = {
       id: '1',
-      name: 'Finn Mertins',
+      name: 'Finn Mertens',
       purpose: 'The Last Human',
       source: 'Land of Ooo',
       url: 'https://adventuretime.fandom.com/wiki/Finn',
