@@ -49,6 +49,17 @@ describe('cryptid routes', () => {
       ]
     `);
   });
+  it('gets cryptid with detail', async () => {
+    const resp = await request(app).get('/cryptids/1');
+    const squatch = {
+      id: '1',
+      name: 'Sasquatch',
+      alias: 'Bigfoot',
+      origins: 'North America',
+      url: 'https://en.wikipedia.org/wiki/Bigfoot',
+    };
+    expect(resp.body).toEqual(squatch);
+  });
   afterAll(() => {
     pool.end();
   });
