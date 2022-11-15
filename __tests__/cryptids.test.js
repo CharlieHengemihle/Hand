@@ -73,6 +73,12 @@ describe('cryptid routes', () => {
       ...newCryptid,
     });
   });
+  it('PUT /cryptids/:id should update a cryptid', async () => {
+    const resp = await request(app).put('/cryptids/1').send({
+      name: 'Samsquanch',
+    });
+    expect(resp.body.name).toBe('Samsquanch');
+  });
   afterAll(() => {
     pool.end();
   });
