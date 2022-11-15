@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS dwarves;
 DROP TABLE IF EXISTS elves;
 DROP TABLE IF EXISTS goblins;
 DROP TABLE IF EXISTS humans;
+DROP TABLE IF EXISTS cryptids;
 
 CREATE TABLE dwarves (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -34,6 +35,14 @@ CREATE TABLE humans (
   name VARCHAR NOT NULL,
   purpose VARCHAR NOT NULL,
   source VARCHAR NOT NULL,
+  url VARCHAR NOT NULL
+);
+
+CREATE TABLE cryptids (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR NOT NULL,
+  alias VARCHAR NOT NULL,
+  origins VARCHAR NOT NULL,
   url VARCHAR NOT NULL
 );
 
@@ -74,20 +83,11 @@ VALUES
 ('Elendil', 'High King of the Dúnedain', 'Númenor', 'https://lotr.fandom.com/wiki/Elendil'),
 ('Richard Stink', 'Harbinger of Seasonal Scents', 'Huntington, West Virginia', 'https://mbmbam.fandom.com/wiki/Richard_Stink');
 
--- DROP TABLE IF EXISTS monsters;
 
--- CREATE TABLE monsters (
---   id BIGINT GENERATED ALWAYS AS IDENTITY,
---   name VARCHAR NOT NULL,
---   purpose VARCHAR NOT NULL,
---   source VARCHAR NOT NULL,
---   url VARCHAR NOT NULL
--- );
-
--- INSERT INTO monsters (name, purpose, source, url)
--- VALUES
--- ('Legolas Greenleaf', 'Prince of the Woodland Realm', 'Middle Earth', 'https://lotr.fandom.com/wiki/Legolas'),
--- ('Celebrimbor', 'Lord of the Gwaith-i-Mírdain', 'Middle Earth', 'https://lotr.fandom.com/wiki/Celebrimbor'),
--- ('Ernest J. Keebler', 'Head Elf', 'The Hollow Tree Factory', 'https://en.wikipedia.org/wiki/Keebler_Company#Keebler_Elves'),
--- ('Remallia Haventree', 'Lead Delegate of the Harpers', 'Waterdeep', 'https://forgottenrealms.fandom.com/wiki/Remallia_Haventree'),
--- ('Kiaransalee', 'Lady of the Dead', 'Threnody', 'https://forgottenrealms.fandom.com/wiki/Kiaransalee');
+INSERT INTO cryptids (name, alias, origins, url)
+VALUES
+('Sasquatch', 'Bigfoot', 'North America', 'https://en.wikipedia.org/wiki/Bigfoot'),
+('Mothman', 'Mason Bird Monster', 'Point Pleasant, West Virginia', 'https://en.wikipedia.org/wiki/Mothman'),
+('Loch Ness Monster', 'Nessie', 'Loch Ness, Scottish Highlands', 'https://en.wikipedia.org/wiki/Loch_Ness_Monster'),
+('Mongolian Death Worm', 'olgoi-khorkhoi', 'Gobi Desert', 'https://en.wikipedia.org/wiki/Mongolian_death_worm'),
+('Jersey Devil', 'Leeds Devil', 'Pine Barrens, New Jersey', 'https://en.wikipedia.org/wiki/Jersey_Devil');
