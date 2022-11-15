@@ -79,6 +79,13 @@ describe('cryptid routes', () => {
     });
     expect(resp.body.name).toBe('Samsquanch');
   });
+  it('DELETE /cryptids/:id should delete a cryptid', async () => {
+    const resp = await request(app).delete('/cryptids/1');
+    expect(resp.status).toBe(200);
+
+    const cryptResp = await request(app).get('/cryptids/1');
+    expect(cryptResp.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
