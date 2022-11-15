@@ -60,6 +60,19 @@ describe('cryptid routes', () => {
     };
     expect(resp.body).toEqual(squatch);
   });
+  it('POST /cryptids should add a new cryptid', async () => {
+    const newCryptid = {
+      name: 'Loveland Frogman',
+      alias: 'Loveland Lizard',
+      origins: 'Loveland, Ohio',
+      url: 'https://en.wikipedia.org/wiki/Loveland_frog',
+    };
+    const resp = await request(app).post('/cryptids').send(newCryptid);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newCryptid,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
